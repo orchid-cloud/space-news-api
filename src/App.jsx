@@ -8,8 +8,7 @@ function App() {
     fetch('https://api.spaceflightnewsapi.net/v4/articles/')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        setNewsList([data]);
+        setNewsList(data.results);
       });
   }, []);
   console.log({ newsList });
@@ -20,7 +19,12 @@ function App() {
       </div>
       <div className="newsContainer">
         {newsList.map((val, key) => (
-          <div key={key}>{val.results[0].title}</div>
+          <div key={key}>
+            <h3>{val.title}</h3>
+            <img src={val.image_url} alt="" />
+            <p>{val.summary}</p>
+            <p>{val.published_at}</p>
+          </div>
         ))}
       </div>
     </div>
