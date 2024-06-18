@@ -19,7 +19,13 @@ function App() {
       </div>
       <div className="newsContainer">
         {newsList.map((val, key) => (
-          <div key={key}>
+          <div
+            key={key}
+            className="article"
+            onClick={() => {
+              window.location.href = val.url;
+            }}
+          >
             <h3>{val.title}</h3>
             <img src={val.image_url} alt="" />
             <p>{val.summary}</p>
